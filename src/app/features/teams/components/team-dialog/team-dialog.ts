@@ -44,7 +44,7 @@ export class TeamDialogComponent {
         },
         error: () => {
           this.loading.set(false);
-          this.snackBar.open('שגיאה ביצירת הצוות', 'סגור', { duration: 3000 });
+          this.snackBar.open('Error creating team', 'Close', { duration: 3000 });
         }
       });
     }

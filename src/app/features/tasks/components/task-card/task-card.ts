@@ -37,11 +37,11 @@ export class TaskCardComponent {
     yesterday.setDate(yesterday.getDate() - 1);
     
     if (d.toDateString() === today.toDateString()) {
-      return 'היום';
+      return 'Today';
     } else if (d.toDateString() === yesterday.toDateString()) {
-      return 'אתמול';
+      return 'Yesterday';
     } else {
-      return d.toLocaleDateString('he-IL', { day: 'numeric', month: 'short' });
+      return d.toLocaleDateString('en-US', { day: 'numeric', month: 'short' });
     }
   }
 
@@ -56,18 +56,18 @@ export class TaskCardComponent {
 
   getPriorityLabel(priority: string): string {
     const labels = {
-      'low': 'נמוכה',
-      'normal': 'רגילה',
-      'high': 'גבוהה'
+      'low': 'Low',
+      'normal': 'Normal',
+      'high': 'High'
     };
     return labels[priority as keyof typeof labels] || priority;
   }
 
   getStatusLabel(status: string): string {
     const labels = {
-      'todo': 'לביצוע',
-      'in_progress': 'בביצוע',
-      'done': 'הושלם'
+      'todo': 'To Do',
+      'in_progress': 'In Progress',
+      'done': 'Done'
     };
     return labels[status as keyof typeof labels] || status;
   }
@@ -95,7 +95,7 @@ openTaskDetails(): void {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.snackBar.open('המשימה עודכנה בהצלחה!', 'סגור', { duration: 2000 });
+        this.snackBar.open('Task updated successfully!', 'Close', { duration: 2000 });
       }
     });
   }
@@ -109,10 +109,10 @@ openTaskDetails(): void {
       direction: 'rtl',
       panelClass: 'confirm-dialog-container',
       data: {
-        title: 'מחיקת משימה',
-        message: 'האם אתה בטוח שברצונך למחוק משימה זו?',
-        confirmText: 'מחק',
-        cancelText: 'ביטול'
+        title: 'Delete Task',
+        message: 'Are you sure you want to delete this task?',
+        confirmText: 'Delete',
+        cancelText: 'Cancel'
       }
     });
 
@@ -123,7 +123,7 @@ openTaskDetails(): void {
             this.taskDeleted.emit(this.task().id);
           },
           error: () => {
-            this.snackBar.open('שגיאה במחיקת המשימה', 'סגור', { duration: 3000 });
+            this.snackBar.open('Error deleting task', 'Close', { duration: 3000 });
           }
         });
       }

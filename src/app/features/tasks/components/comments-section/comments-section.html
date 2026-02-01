@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title>
       <mat-icon>comment</mat-icon>
-      תגובות ({{ comments().length }})
+      Comments ({{ comments().length }})
     </mat-card-title>
   </mat-card-header>
 
@@ -10,7 +10,7 @@
     <div class="comments-content">
       @if (loading()) {
         <div class="loading-container">
-          <p>טוען תגובות...</p>
+          <p>Loading comments...</p>
         </div>
       } @else {
         @if (comments().length > 0) {
@@ -21,7 +21,7 @@
                   <div class="comment-header">
                     <span class="comment-author">
                       <mat-icon>person</mat-icon>
-                      {{ comment.userName || 'משתמש' }}
+                      {{ comment.userName || 'User' }}
                     </span>
                     <span class="comment-date">
                       {{ comment.createdAt | date: 'dd/MM/yyyy HH:mm' }}
@@ -38,7 +38,7 @@
         } @else {
           <div class="no-comments">
             <mat-icon>chat_bubble_outline</mat-icon>
-            <p>אין תגובות עדיין</p>
+            <p>No comments yet</p>
           </div>
         }
       }
@@ -50,7 +50,7 @@
           matInput 
           formControlName="body" 
           rows="1"
-          placeholder="הוסף תגובה..."></textarea>
+          placeholder="Add a comment..."></textarea>
       </mat-form-field>
 
       <button 

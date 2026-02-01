@@ -99,7 +99,7 @@ export class ProjectsListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.snackBar.open('הפרויקט נוצר בהצלחה!', 'סגור', { duration: 3000 });
+        this.snackBar.open('Project created successfully!', 'Close', { duration: 3000 });
         this.loadProjects();
       }
     });
@@ -119,10 +119,10 @@ export class ProjectsListComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '400px',
       data: {
-        title: 'מחיקת פרויקט',
-        message: `האם אתה בטוח שברצונך למחוק את הפרויקט "${project.name}"?`,
-        confirmText: 'מחק',
-        cancelText: 'ביטול'
+        title: 'Delete Project',
+        message: 'Are you sure you want to delete this project?',
+        confirmText: 'Delete',
+        cancelText: 'Cancel'
       }
     });
 
@@ -130,10 +130,10 @@ export class ProjectsListComponent implements OnInit {
       if (result) {
         this.projectsService.deleteProject(project.id).subscribe({
           next: () => {
-            this.snackBar.open('הפרויקט נמחק בהצלחה', 'סגור', { duration: 3000 });
+            this.snackBar.open('Project deleted successfully', 'Close', { duration: 3000 });
           },
           error: (error: any) => {
-            this.snackBar.open('שגיאה במחיקת הפרויקט: ' + (error.error?.message || 'שגיאה לא ידועה'), 'סגור', { 
+            this.snackBar.open('Error deleting project: ' + (error.error?.message || 'Unknown error'), 'Close', { 
               duration: 5000 
             });
           }

@@ -83,7 +83,7 @@ export class TasksBoardComponent implements OnInit {
           this.tasksService.tasks.set(enrichedTasks);
         },
         error: () => {
-          this.snackBar.open('שגיאה בטעינת המשימות', 'סגור', { duration: 3000 });
+          this.snackBar.open('Error loading tasks', 'Close', { duration: 3000 });
         }
       });
     } else {
@@ -99,7 +99,7 @@ export class TasksBoardComponent implements OnInit {
           }
         },
         error: () => {
-          this.snackBar.open('שגיאה בטעינת המשימות', 'סגור', { duration: 3000 });
+          this.snackBar.open('Error loading tasks', 'Close', { duration: 3000 });
         }
       });
     }
@@ -114,10 +114,10 @@ export class TasksBoardComponent implements OnInit {
     
     this.tasksService.updateTask(task.id, { status: newStatus }).subscribe({
       next: () => {
-        this.snackBar.open('המשימה עודכנה בהצלחה!', 'סגור', { duration: 2000 });
+        this.snackBar.open('Task updated successfully!', 'Close', { duration: 2000 });
       },
       error: () => {
-        this.snackBar.open('שגיאה בעדכון המשימה', 'סגור', { duration: 3000 });
+        this.snackBar.open('Error updating task', 'Close', { duration: 3000 });
         this.loadTasks();
       }
     });

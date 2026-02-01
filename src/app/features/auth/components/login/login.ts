@@ -44,11 +44,11 @@ export class LoginComponent {
       this.authService.login(this.loginForm.getRawValue()).subscribe({
         next: () => {
           this.router.navigate(['/dashboard']);
-          this.snackBar.open('התחברת בהצלחה!', 'סגור', { duration: 3000 });
+          this.snackBar.open('Logged in successfully!', 'Close', { duration: 3000 });
         },
         error: () => {
           this.loading.set(false);
-          this.snackBar.open('שגיאה בהתחברות. בדוק את הפרטים ונסה שוב.', 'סגור', { 
+          this.snackBar.open('Login error. Check your credentials and try again.', 'Close', { 
             duration: 3000 
           });
         }

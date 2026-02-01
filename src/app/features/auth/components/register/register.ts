@@ -46,11 +46,11 @@ export class RegisterComponent {
       this.authService.register(this.registerForm.getRawValue()).subscribe({
         next: () => {
           this.router.navigate(['/dashboard']);
-          this.snackBar.open('נרשמת בהצלחה!', 'סגור', { duration: 3000 });
+          this.snackBar.open('Registered successfully!', 'Close', { duration: 3000 });
         },
         error: () => {
           this.loading.set(false);
-          this.snackBar.open('שגיאה ברישום. נסה שוב.', 'סגור', { duration: 3000 });
+          this.snackBar.open('Registration error. Try again.', 'Close', { duration: 3000 });
         }
       });
     }

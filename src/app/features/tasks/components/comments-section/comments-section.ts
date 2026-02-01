@@ -51,7 +51,7 @@ export class CommentsSectionComponent implements OnInit {
   loadComments(): void {
     this.commentsService.loadComments(this.taskId()).subscribe({
       error: (error) => {
-        this.snackBar.open('שגיאה בטעינת התגובות', 'סגור', { duration: 3000 });
+        this.snackBar.open('Error loading comments', 'Close', { duration: 3000 });
       }
     });
   }
@@ -69,11 +69,11 @@ export class CommentsSectionComponent implements OnInit {
         next: () => {
           this.commentForm.reset();
           this.submitting.set(false);
-          this.snackBar.open('התגובה נוספה בהצלחה!', 'סגור', { duration: 2000 });
+          this.snackBar.open('Comment added successfully!', 'Close', { duration: 2000 });
         },
         error: (error) => {
           this.submitting.set(false);
-          this.snackBar.open('שגיאה בהוספת התגובה', 'סגור', { duration: 3000 });
+          this.snackBar.open('Error adding comment', 'Close', { duration: 3000 });
         }
       });
     }
