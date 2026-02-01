@@ -71,7 +71,7 @@ openTaskDetails(): void {
 
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      this.snackBar.open('המשימה עודכנה בהצלחה!', 'סגור', { duration: 2000 });
+      this.snackBar.open('Task updated successfully!', 'Close', { duration: 2000 });
     }
   });
 }

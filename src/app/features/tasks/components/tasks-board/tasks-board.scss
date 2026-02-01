@@ -1,9 +1,13 @@
 .tasks-container {
-  height: calc(100vh - 70px);
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 30px;
-  background: #3d5a80;
+  margin: 0;
+  background: #f8f9fa;
+  direction: ltr;
+  text-align: left;
 }
 
 .header {
@@ -11,20 +15,15 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
-  background: rgba(255, 255, 255, 0.1);
+  background: #ffffff;
   backdrop-filter: blur(10px);
   padding: 24px 30px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   animation: slideIn 0.5s ease-out;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #e0e0e0;
   
   .header-left {
-    display: flex;
-    align-items: center;
-  }
-  
-  .header-right {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -32,27 +31,33 @@
     .back-button {
       width: 40px;
       height: 40px;
-      background: rgba(0, 212, 255, 0.2);
-      color: #00d4ff;
+      background: transparent;
+      color: var(--primary-blue);
       border-radius: 8px;
       transition: all 0.3s ease;
       
       &:hover {
-        background: rgba(0, 212, 255, 0.3);
+        background: rgba(44, 82, 130, 0.1);
         transform: scale(1.05);
       }
       
       mat-icon {
-        font-size: 20px;
+        font-size: 24px;
       }
     }
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
   
   h1 {
     margin: 0;
     font-size: 28px;
     font-weight: 700;
-    color: white;
+    color: #1e3a5f;
     text-align: right;
   }
   
@@ -62,13 +67,13 @@
     font-size: 15px;
     font-weight: 600;
     border-radius: 12px;
-    background: linear-gradient(135deg, var(--accent-turquoise) 0%, var(--accent-cyan) 100%);
-    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.25);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+    box-shadow: 0 4px 12px rgba(30, 58, 95, 0.25);
     transition: all 0.3s ease;
     
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 212, 255, 0.35);
+      box-shadow: 0 6px 20px rgba(30, 58, 95, 0.35);
     }
     
     mat-icon {
@@ -91,6 +96,7 @@
   flex: 1;
   overflow: hidden;
   animation: fadeIn 0.6s ease-out;
+  direction: ltr;
 }
 
 .column {
@@ -104,43 +110,76 @@
 }
 
 .column-header {
-  padding: 20px 24px;
+  padding: 18px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 8px 8px 0 0;
+  border-radius: 12px 12px 0 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+  }
   
   h2 {
     margin: 0;
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 600;
     color: white;
     display: flex;
     align-items: center;
     gap: 8px;
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 1;
   }
   
   .count {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
     color: white;
-    padding: 6px 14px;
-    border-radius: 20px;
+    padding: 4px 12px;
+    border-radius: 12px;
     font-weight: 600;
-    font-size: 14px;
-    min-width: 35px;
+    font-size: 13px;
+    min-width: 28px;
     text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
   }
   
   &.todo {
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+    background: linear-gradient(135deg, #475569 0%, #334155 100%);
+    
+    &:hover {
+      background: linear-gradient(135deg, #525f75 0%, #3d4a5f 100%);
+    }
   }
   
   &.in-progress {
-    background: linear-gradient(135deg, var(--accent-turquoise) 0%, var(--accent-cyan) 100%);
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    
+    &:hover {
+      background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+    }
   }
   
   &.done {
-    background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    
+    &:hover {
+      background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+    }
   }
 }
 

@@ -76,7 +76,7 @@ export class ProjectsListComponent implements OnInit {
           this.projectsService.projects.set(enrichedProjects);
         },
         error: () => {
-          this.snackBar.open('שגיאה בטעינת הפרויקטים', 'סגור', { duration: 3000 });
+          this.snackBar.open('Error loading projects', 'Close', { duration: 3000 });
         }
       });
     } else {
@@ -85,7 +85,7 @@ export class ProjectsListComponent implements OnInit {
         next: () => {
         },
         error: () => {
-          this.snackBar.open('שגיאה בטעינת הפרויקטים', 'סגור', { duration: 3000 });
+          this.snackBar.open('Error loading projects', 'Close', { duration: 3000 });
         }
       });
     }

@@ -7,12 +7,12 @@
       </button>
     </div>
     <div class="header-right">
+      <h1>{{ teamId ? 'Projects' : 'My Projects' }}</h1>
       @if (teamId) {
         <button mat-icon-button class="back-button" (click)="goBack()">
           <mat-icon>arrow_back</mat-icon>
         </button>
       }
-      <h1>{{ teamId ? 'Projects' : 'My Projects' }}</h1>
     </div>
   </div>
 

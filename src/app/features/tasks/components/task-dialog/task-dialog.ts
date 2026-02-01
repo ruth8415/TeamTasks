@@ -156,15 +156,30 @@ export class TaskDialogComponent implements OnInit {
           projectId: formValue.projectId || this.data.projectId!
         };
         
+        console.log('Creating task with data:', taskData);
+        
         this.tasksService.createTask(taskData).subscribe({
-          next: () => {
+          next: (response) => {
+            console.log('Task created successfully:', response);
+            this.snackBar.open('Task created successfully!', 'Close', { duration: 3000 });
             this.dialogRef.close(true);
           },
-          error: () => {
+          error: (error) => {
+            console.error('Error creating task:', error);
             this.loading.set(false);
-            this.snackBar.open('Error creating task', 'Close', { duration: 3000 });
+            this.snackBar.open(`Error: ${error.message || 'Could not create task'}`, 'Close', { duration: 5000 });
           }
         });
+      } else {
+        console.log('Form is invalid:', this.taskForm.errors);
+        console.log('Form values:', this.taskForm.value);
+        Object.keys(this.taskForm.controls).forEach(key => {
+          const control = this.taskForm.get(key);
+          if (control && control.invalid) {
+            console.log(`${key} is invalid:`, control.errors);
+          }
+        });
+        this.snackBar.open('Please fill all required fields', 'Close', { duration: 3000 });
       }
     }
   }

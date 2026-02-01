@@ -1,41 +1,41 @@
 <div class="task-card" (click)="openTaskDetails()">
   <div class="task-header">
-    <div class="task-title">{{ task().title }}</div>
+    <h3 class="task-title">{{ task().title }}</h3>
     <div class="task-actions" (click)="$event.stopPropagation()">
-      <button mat-icon-button (click)="openComments($event)" matTooltip="Comments">
-        <mat-icon>chat</mat-icon>
+      <button mat-icon-button (click)="openComments($event)">
+        <mat-icon>chat_bubble_outline</mat-icon>
       </button>
-      <button mat-icon-button (click)="editTask($event)" matTooltip="Edit">
+      <button mat-icon-button (click)="editTask($event)">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button (click)="deleteTask($event)" color="warn" matTooltip="Delete">
+      <button mat-icon-button (click)="deleteTask($event)">
         <mat-icon>delete</mat-icon>
       </button>
     </div>
   </div>
   
-  <div class="task-meta">
+  <div class="task-info">
+    @if (task().dueDate) {
+      <span class="task-date">
+        <mat-icon>event</mat-icon>
+        {{ formatDate(task().dueDate) }}
+      </span>
+    }
     @if (task().projectName) {
-      <span class="meta-item">
+      <span class="task-project">
         <mat-icon>folder</mat-icon>
         {{ task().projectName }}
       </span>
     }
     @if (task().teamName) {
-      <span class="meta-item">
+      <span class="task-team">
         <mat-icon>groups</mat-icon>
         {{ task().teamName }}
       </span>
     }
-    @if (task().dueDate) {
-      <span class="meta-item">
-        <mat-icon>event</mat-icon>
-        {{ formatDate(task().dueDate) }}
-      </span>
-    }
   </div>
   
-  <div class="task-badges">
+  <div class="task-footer">
     <span class="status-badge" [class]="'status-' + task().status">
       {{ getStatusLabel(task().status) }}
     </span>

@@ -131,14 +131,14 @@ export class TasksBoardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.snackBar.open('המשימה נוצרה בהצלחה!', 'סגור', { duration: 3000 });
+        this.snackBar.open('Task created successfully!', 'Close', { duration: 3000 });
         this.loadTasks();
       }
     });
   }
 
   onTaskDeleted(taskId: number): void {
-    this.snackBar.open('המשימה נמחקה בהצלחה!', 'סגור', { duration: 2000 });
+    this.snackBar.open('Task deleted successfully!', 'Close', { duration: 2000 });
   }
 
   goBack(): void {
