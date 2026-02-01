@@ -1,5 +1,5 @@
 export const API_CONFIG = {
-  baseUrl: 'https://chanis-tasks-serve.onrender.com/api',
+  baseUrl: 'https://task-project-azk0.onrender.com/api',
   endpoints: {
     auth: {
       register: '/auth/register',
