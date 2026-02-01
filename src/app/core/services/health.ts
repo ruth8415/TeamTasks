@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class HealthService {
   private http = inject(HttpClient);
-  private healthUrl = 'http://localhost:3000/health';
+  private healthUrl = 'https://chanis-tasks-serve.onrender.com/api/health';
 
   checkHealth(): Observable<{ status: string }> {
     return this.http.get<{ status: string }>(this.healthUrl);
